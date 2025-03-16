@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LePou</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      text-align: center;
+      background-image: url('bonbon.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      color: black;
+    }
+    .lebronpedia-header {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 100px;
+      margin-top: 0;
+      color: rgb(0, 0, 0);
+    }
+    .lebronpedia-subheader {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    #links {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+    .timer-section {
+      margin-top: 60px;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    #timer {
+      font-family: 'Arial', sans-serif;
+      font-size: 90px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- First Section -->
+  <div>
+    <h1 class="lebronpedia-header">LEBRONPEDIA</h1>
+    <h4 class="lebronpedia-subheader">Indulge In Our Wealth of Lebron-centric Knowledge</h4>
+    <div id="links">Loading...</div>
+  </div>
+
+  <!-- Second Section -->
+  <div class="timer-section">
+    <h1>How Old Is Lebonbon RIGHT NOW?</h1>
+    <h2>Our GOAT has blessed us with his godly presence for EXACTLY:</h2>
+    <div id="timer">Loading...</div>
+    <button id="ok">OK</button>
+  </div>
+
+  <script>
+    const birthdate = new Date('1984-12-29T16:04:00');
+
+    function updateTimer() {
+      const now = new Date();
+      let diffMs = now - birthdate;
+
+      // Total days
+      const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      // Approximate years (ignoring leap years)
+      const years = Math.floor(totalDays / 365);
+      const days = totalDays - (years * 365);
+
+      // Remaining time within the day
+      const remainderMs = diffMs % (1000 * 60 * 60 * 24);
+      const hours = Math.floor(remainderMs / (1000 * 60 * 60));
+      const minutes = Math.floor((remainderMs % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainderMs % (1000 * 60)) / 1000);
+
+      // Display (showing in milliseconds as you had)
+      document.getElementById('timer').innerText = `${diffMs} Milliseconds`;
+    }
+
+    // Update every millisecond
+    setInterval(updateTimer, 1);
+    updateTimer();
+  </script>
+
+</body>
+</html>
