@@ -6,17 +6,13 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Monospace, sans-serif;
       margin: 0;
       text-align: center;
-      background-image: url('bonbon.jpg');
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
       color: black;
     }
     .lebronpedia-header {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Impact, sans-serif;
       font-size: 100px;
       margin-top: 0;
       color: rgb(0, 0, 0);
@@ -25,10 +21,67 @@
       font-size: 24px;
       margin-bottom: 30px;
     }
+
     #links {
-      font-size: 20px;
+      position: relative;
+      display: inline-block;
       margin-bottom: 50px;
     }
+    #links img {
+      width: 1000px;
+      height: auto;
+      display: block;
+    }
+    .corner-button {
+      position: absolute;
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .top-left {
+      top: 10px;
+      left: 10px;
+      background-color: #e7e7e7; 
+      color: black;
+      border: 2px solid black;
+      font-family: monospace, sans-serif;
+    }
+
+    .top-right {
+      top: 10px;
+      right: 10px;
+      background-color: #e7e7e7; 
+      color: black;
+      border: 2px solid black;
+      font-family: monospace, sans-serif;
+    }
+    .bottom-left {
+      bottom: 10px;
+      left: 10px;
+      background-color: #e7e7e7; 
+      color: black;
+      border: 2px solid black;
+      font-family: monospace, sans-serif;
+    }
+    .bottom-right {
+      bottom: 10px;
+      right: 10px;
+      background-color: #e7e7e7; 
+      color: black;
+      border: 2px solid black;
+      font-family: monospace, sans-serif;
+    }
+    .top-left:hover, .top-right:hover, .bottom-left:hover, .bottom-right:hover {
+      background-color: rgb(192, 192, 192);
+    }
+    .top-left:active, .top-right:active, .bottom-left:active, .bottom-right:active {  
+      box-shadow: 0 2px #666;
+      transform: translateY(4px);
+    }
+
     .timer-section {
       margin-top: 60px;
       font-size: 40px;
@@ -39,51 +92,97 @@
       font-size: 90px;
       margin-top: 40px;
     }
+
+    /* Popup Style */
+    .popuptext {
+      visibility: hidden;
+      width: 180px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 25px;
+      border-radius: 8px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left:center;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .show {
+      visibility: visible;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
 
   <!-- First Section -->
-  <div>
-    <h1 class="lebronpedia-header">LEBRONPEDIA</h1>
-    <h4 class="lebronpedia-subheader">Indulge In Our Wealth of Lebron-centric Knowledge</h4>
-    <div id="links">Loading...</div>
-  </div>
-
-  <!-- Second Section -->
   <div class="timer-section">
     <h1>How Old Is Lebonbon RIGHT NOW?</h1>
     <h2>Our GOAT has blessed us with his godly presence for EXACTLY:</h2>
     <div id="timer">Loading...</div>
-    <button id="ok">OK</button>
+  </div>
+  <!-- Second Section -->
+  <div>
+    <h1 class="lebronpedia-header">LePou</h1>
+    <h4 class="lebronpedia-subheader">Your very own pocket-sized Lebonbon😍😍😍</h4>
+    <div id="links">
+      <img src="bonbon.jpg" alt="Bonbon Image">
+      
+      <div class="popup" style="position: absolute; top: 10px; left: 10px;">
+        <button class="corner-button top-left" onclick="showPopup('feedPopup')">Feed Lebonbon</button>
+        <span class="popuptext" id="feedPopup">Lebonbon is now satiated</span>
+      </div>
+
+      <div class="popup" style="position: absolute; top: 10px; right: 10px;">
+        <button class="corner-button top-right" onclick="showPopup('petPopup')">Pet Lebonbon</button>
+        <span class="popuptext" id="petPopup">Lebonbon is now happy</span>
+      </div>
+
+      <div class="popup" style="position: absolute; bottom: 10px; left: 10px;">
+        <button class="corner-button bottom-left" onclick="showPopup('playPopup')">Play with Lebonbon</button>
+        <span class="popuptext" id="playPopup">Lebonbon has been played with sufficiently</span>
+      </div>
+
+      <div class="popup" style="position: absolute; bottom: 10px; right: 10px;">
+        <button class="corner-button bottom-right" onclick="showPopup('sleepPopup')">Sleep Lebonbon</button>
+        <span class="popuptext" id="sleepPopup">Lebonbon has died.</span>
+      </div>
+
+    </div>
   </div>
 
   <script>
+    // POPUP FUNCTION
+    function showPopup(id) {
+      var popup = document.getElementById(id);
+      popup.classList.add("show");
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 2000); // Hide after 2 seconds
+    }
+
+    // TIMER FUNCTION
     const birthdate = new Date('1984-12-29T16:04:00');
 
     function updateTimer() {
       const now = new Date();
       let diffMs = now - birthdate;
-
-      // Total days
       const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-      // Approximate years (ignoring leap years)
       const years = Math.floor(totalDays / 365);
       const days = totalDays - (years * 365);
-
-      // Remaining time within the day
       const remainderMs = diffMs % (1000 * 60 * 60 * 24);
       const hours = Math.floor(remainderMs / (1000 * 60 * 60));
       const minutes = Math.floor((remainderMs % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainderMs % (1000 * 60)) / 1000);
-
-      // Display (showing in milliseconds as you had)
-      document.getElementById('timer').innerText = `${diffMs} Milliseconds`;
+      document.getElementById('timer').innerText = 
+        `${years} years, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
     }
 
-    // Update every millisecond
-    setInterval(updateTimer, 1);
+    setInterval(updateTimer, 1000);
     updateTimer();
   </script>
 
