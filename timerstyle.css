@@ -1,0 +1,27 @@
+h1 {
+    text-align: center;
+    font-family: monospace, sans-serif;
+    font-weight: bold;
+}
+
+body {
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    margin-top: 50px;
+}
+
+#timer {
+    font-size: 110px;
+    margin: 100px;
+}
+
+body, html {
+    height: 100%;
+  }
+  
+  @font-face {
+    font-family: 'KabelBlack';
+    src: url("C:\Users\Mcheu\Documents\Python Files\Scrapyard 2025\Fonts\Kabel-Black.ttf") format("truetype");
+    font-family: 'LebronSlab';
+    src: url("C:\Users\Mcheu\Documents\Python Files\Scrapyard 2025\Fonts\LebronSlab.otf")
+}
