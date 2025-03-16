@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lebron</title>
-  <link rel="stylesheet" href="timerstyle.css">
+  <title>Lebronpedia</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      font-size:40px;
-      font-weight:bold;
+      margin: 0;
       text-align: center;
-      margin-top: 100;
-      background-image: url('bonbon.jpg'); /* Use relative path */
-      background-size: cover;  /* Ensures the image covers the whole page */
-      background-position: center center;  /* Centers the background */
-      background-attachment: fixed; /* Keeps the background fixed while scrolling */
-      color: black; /* Optional: change text color for visibility on background */
+      background-image: url('bonbon.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      color: black;
+    }
+    .lebronpedia-header {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 100px;
+      margin-top: 0;
+      color: rgb(255, 255, 143);
+    }
+    .lebronpedia-subheader {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    #links {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+    .timer-section {
+      margin-top: 100px;
+      font-size: 40px;
+      font-weight: bold;
     }
     #timer {
       font-family: 'Arial', sans-serif;
-      font-style:bold;
       font-size: 90px;
       margin-top: 70px;
     }
@@ -27,9 +43,17 @@
 </head>
 <body>
 
-  <div class=".bg">
+  <!-- First Section -->
+  <div>
+    <h1 class="lebronpedia-header">LEBRONPEDIA</h1>
+    <h4 class="lebronpedia-subheader">Indulge In Our Wealth of Lebron-centric Knowledge</h4>
+    <div id="links">Loading...</div>
+  </div>
+
+  <!-- Second Section -->
+  <div class="timer-section">
     <h1>How Old Is Lebonbon RIGHT NOW?</h1>
-    <h2>Our GOAT has blessing us with his godly presence for EXACTLY:</h2>
+    <h2>Our GOAT has blessed us with his godly presence for EXACTLY:</h2>
     <div id="timer">Loading...</div>
   </div>
 
@@ -53,16 +77,13 @@
       const minutes = Math.floor((remainderMs % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainderMs % (1000 * 60)) / 1000);
 
-      // Display
-      //document.getElementById('timer').innerText = 
-        //`${years} years,\n ${days} days,\n ${hours} hours, \n${minutes} minutes, \n${seconds} seconds`;
-        document.getElementById('timer').innerText = 
-            `${diffMs} Milliseconds`;
+      // Display (showing in milliseconds as you had)
+      document.getElementById('timer').innerText = `${diffMs} Milliseconds`;
     }
 
-    // Update every second
+    // Update every millisecond
     setInterval(updateTimer, 1);
-    updateTimer(); // Initial call
+    updateTimer();
   </script>
 
 </body>
