@@ -179,10 +179,10 @@
       const minutes = Math.floor((remainderMs % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainderMs % (1000 * 60)) / 1000);
       document.getElementById('timer').innerText = 
-        `${years} years, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        `${diffMs} Milliseconds!!`;
     }
 
-    setInterval(updateTimer, 1000);
+    setInterval(updateTimer, 0.5);
     updateTimer();
   </script>
 
